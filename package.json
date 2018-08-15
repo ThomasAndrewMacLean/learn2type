@@ -1,0 +1,20 @@
+{
+    "name": "learn2type",
+    "version": "0.0.0",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+        "dev": "parcel .src/puglife/index.pug",
+        "deploy": "rimraf dist && parcel build .src/puglife/index.pug && node upload"
+    },
+    "dependencies": {
+        "neocities": "0.0.3"
+    },
+    "devDependencies": {
+        "dotenv": "^6.0.0",
+        "less": "^3.8.1",
+        "parcel-bundler": "^1.9.7",
+        "pug": "^2.0.3",
+        "rimraf": "^2.6.2"
+    }
+}
