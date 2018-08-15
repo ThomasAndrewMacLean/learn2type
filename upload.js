@@ -1,20 +1,21 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load();
 }
+
 const fs = require('fs');
 const NeoCities = require('neocities');
 
 const api = new NeoCities('learn2type', process.env.NEO_PW);
 
-const cssFile = fs.readdirSync('dist').find(files => files.includes('.css'));
-const jsFile = fs.readdirSync('dist').find(files => files.includes('.js'));
+const files = fs
+    .readdirSync('dist')
+    .filter(file => !file.includes('.map'))
+    .map(file => {
+        return { name: file, path: 'dist/' + file };
+    });
 
 api.upload(
-    [
-        { name: 'index.html', path: 'dist/index.html' },
-        { name: cssFile, path: 'dist/' + cssFile },
-        { name: jsFile, path: 'dist/' + jsFile }
-    ],
+    files,
     function(resp) {
         console.log(resp);
     }
