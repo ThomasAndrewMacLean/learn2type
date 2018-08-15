@@ -5,17 +5,24 @@
     "license": "MIT",
     "scripts": {
         "dev": "parcel .src/puglife/index.pug",
-        "deploy": "rimraf dist && parcel build .src/puglife/index.pug && node upload"
+        "deploy": "rimraf dist && parcel build .src/puglife/index.pug && node upload",
+        "first-deploy": "claudia create --region eu-west-1 --api-module backend/app  --set-env-from-json .claudia.env.json",
+        "deploy-aws": "claudia update",
+        "log": "smoketail -f /aws/lambda/learn2type -r eu-west-1"
     },
     "dependencies": {
-        "neocities": "0.0.3"
+        "claudia-api-builder": "^4.1.1",
+        "node-fetch": "^2.2.0"
     },
     "devDependencies": {
+        "claudia": "^5.1.1",
         "dotenv": "^6.0.0",
         "less": "^3.8.1",
+        "neocities": "0.0.3",
         "nodemon": "^1.18.3",
         "parcel-bundler": "^1.9.7",
         "pug": "^2.0.3",
-        "rimraf": "^2.6.2"
+        "rimraf": "^2.6.2",
+        "smoketail": "^0.1.1"
     }
 }

@@ -3,3 +3,5 @@ node_modules
 .env
 dist
 .cache
+.claudia.env.json
+claudia.json
