@@ -1,49 +1,16 @@
 @import "../../node_modules/reset-css/less/reset";
 @import "colours";
+@import "header";
 @import "main";
+@import "footer";
+@import "navigation";
 
 body {
   background: @col1;
   color: @col4;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-header {
-  background: @col2;
-  height: 4rem;
-  ul {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    li {
-      font-size: 1rem;
-      margin: 0 1.5rem;
-      cursor: pointer;
-      border-bottom: 3px solid @col2;
-      a {
-        color: @col4;
-      }
-    }
-    li:hover {
-      border-bottom: 3px solid @col3;
-    }
-    li.active {
-      border-bottom: 3px solid @col3;
-    }
-  }
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: @col3;
-  padding: 1rem;
-  height: 2rem;
-  display: flex;
-  span {
-    margin: auto;
-  }
-}
+
 a {
   text-decoration: none;
 }

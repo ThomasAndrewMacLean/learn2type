@@ -1,6 +1,9 @@
 import { setWord } from './game';
+import { setupNavigation } from './navigation';
 let typedWord;
 let currentWord;
+
+setupNavigation();
 
 const setNewWord = () => {
     typedWord = '';
@@ -8,18 +11,14 @@ const setNewWord = () => {
 };
 
 setNewWord();
-// fetch('https://si2wuq30eb.execute-api.eu-west-1.amazonaws.com/latest/words')
-//     .then(r => {
-//         return r.json();
-//     })
-//     .then(result => {
-//         console.log(result.map(r => r.word));
-//     });
 
 document.addEventListener(
     'keydown',
     e => {
-    //check if key is a letter
+        if (location.hash !== '#/Learn2Type') {
+            return;
+        }
+        //check if key is a letter
         if (e.key.length === 1) {
             typedWord += e.key;
         } else if (['Backspace', 'Enter', 'Escape'].includes(e.key)) {
