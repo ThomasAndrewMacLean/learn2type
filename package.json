@@ -7,11 +7,12 @@
         "dev": "parcel src/puglife/index.pug",
         "deploy": "rimraf dist && parcel build src/puglife/index.pug && node upload",
         "build": "rimraf dist && parcel build src/puglife/index.pug",
-        "first-deploy": "claudia create --region eu-west-1 --api-module backend/app  --set-env-from-json .claudia.env.json",
+        "first-deploy": "claudia create --region eu-west-1 --api-module backend/app --set-env-from-json .claudia.env.json --policies policy",
         "deploy-aws": "claudia update",
         "log": "smoketail -f /aws/lambda/learn2type -r eu-west-1"
     },
     "dependencies": {
+        "aws-sdk": "^2.294.0",
         "claudia-api-builder": "^4.1.1",
         "node-fetch": "^2.2.0"
     },

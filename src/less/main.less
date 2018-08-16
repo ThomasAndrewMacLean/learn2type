@@ -1,16 +1,59 @@
 #mainLearn2Type {
-  pointer-events: none;
-
   h1 {
     font-size: 4rem;
   }
+  #start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    button {
+      cursor: pointer;
+      font-size: 3rem;
+      font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+      margin: 2rem;
+      padding: 1rem;
+      border: 3px solid @col3;
+      background: none;
+    }
+    button:hover {
+      border: 3px solid @col2;
+      color: @col2;
+      background: @col3;
+    }
+  }
+  #start.hide {
+    display: none;
+  }
   #word {
+    pointer-events: none;
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 50%;
+    position: relative;
+    .scoreTimer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 5rem;
+      outline: 1px solid grey;
+      margin: 1rem;
+      padding: 0.5rem;
+      .score {
+        display: flex;
+        justify-content: space-between;
+      }
+      .timer{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
   #input {
+    pointer-events: none;
     display: flex;
     justify-content: space-around;
     align-items: center;

@@ -9,8 +9,40 @@ const setNewWord = () => {
     typedWord = '';
     currentWord = setWord();
 };
+document.getElementById('startTypingButton').addEventListener('click', () => {
+    document.getElementById('start').classList.add('hide');
+    startGame();
+});
 
 setNewWord();
+let gameIsOver;
+let currentTime;
+let startTime;
+let score = 0;
+const startGame = () => {
+    gameIsOver = false;
+    startTime = new Date().getTime();
+    setScore(0);
+    gameLoop();
+};
+
+const setTimer = () => {
+    if (gameIsOver) {
+        return;
+    }
+    currentTime = new Date().getTime();
+    const numberOfSecondsPassed = Math.floor((currentTime - startTime) / 1000);
+    document.getElementById('timer').innerText = numberOfSecondsPassed;
+};
+
+const setScore = points => {
+    document.getElementById('score').innerText = score += points;
+};
+
+const gameLoop = () => {
+    window.requestAnimationFrame(gameLoop);
+    setTimer();
+};
 
 document.addEventListener(
     'keydown',
@@ -28,6 +60,7 @@ document.addEventListener(
         }
 
         if (typedWord === currentWord) {
+            setScore(10);
             setNewWord();
         }
 
