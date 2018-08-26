@@ -2,27 +2,29 @@
   h1 {
     font-size: 4rem;
   }
+  button {
+    cursor: pointer;
+    font-size: 3rem;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 2rem;
+    padding: 1rem;
+    border: 3px solid @col3;
+    background: none;
+  }
+  button.small {
+    font-size: 2rem;
+  }
+  button:hover {
+    border: 3px solid @col2;
+    color: @col2;
+    background: @col3;
+  }
   #start {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-
-    button {
-      cursor: pointer;
-      font-size: 3rem;
-      font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-      margin: 2rem;
-      padding: 1rem;
-      border: 3px solid @col3;
-      background: none;
-    }
-    button:hover {
-      border: 3px solid @col2;
-      color: @col2;
-      background: @col3;
-    }
   }
   #start.hide {
     display: none;
@@ -46,7 +48,7 @@
         display: flex;
         justify-content: space-between;
       }
-      .timer{
+      .timer {
         display: flex;
         justify-content: space-between;
       }
@@ -59,5 +61,34 @@
     align-items: center;
     background: rgba(0, 0, 0, 0.1);
     height: 50%;
+  }
+  #setHighScore {
+    position: fixed;
+    display: flex;
+    border: 1px solid grey;
+    background: @col2;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100vw;
+    height: 30vh;
+    margin-top: 20vh;
+    top: 0;
+    left: -100vw;
+    transition: 0.3s;
+    h2 {
+      font-size: 2rem;
+    }
+    input {
+      height: 2rem;
+      font-size: 2rem;
+      margin: 2rem;
+    }
+    button {
+    }
+  }
+  #setHighScore.show {
+    left: 0;
   }
 }

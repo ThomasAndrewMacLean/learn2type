@@ -9,7 +9,8 @@
         "build": "rimraf dist && parcel build src/puglife/index.pug",
         "first-deploy": "claudia create --region eu-west-1 --api-module backend/app --set-env-from-json .claudia.env.json --policies policy",
         "deploy-aws": "claudia update",
-        "log": "smoketail -f /aws/lambda/learn2type -r eu-west-1"
+        "log": "smoketail -f /aws/lambda/learn2type -r eu-west-1",
+        "apidoc": "apidoc -i backend/ -o docs/"
     },
     "dependencies": {
         "aws-sdk": "^2.294.0",
@@ -17,6 +18,7 @@
         "node-fetch": "^2.2.0"
     },
     "devDependencies": {
+        "apidoc": "^0.17.6",
         "claudia": "^5.1.1",
         "dotenv": "^6.0.0",
         "less": "^3.8.1",

@@ -7,10 +7,26 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 const url = 'https://od-api.oxforddictionaries.com/api/v1/wordlist/en/';
 
+/**
+ * @api {get} /ping Test server
+ * @apiName GetPing
+ * @apiGroup Learn2Type
+ * @apiVersion 1.0.0
+ *
+ * @apiSuccess {String} pong Always returns pong
+ */
 api.get('/ping', () => {
     return 'pong';
 });
 
+/**
+ * @api {get} /words Test server
+ * @apiName GetWords
+ * @apiGroup Learn2Type
+ * @apiVersion 1.0.0
+ *
+ * @apiSuccess {Object[]} words Return list of words
+ */
 api.get('/words', () => {
     //TODO check origin
 
@@ -33,23 +49,44 @@ api.get('/words', () => {
     );
 });
 
+/**
+ * @api {post} /highscore Test server
+ * @apiName PostHighscore
+ * @apiGroup Learn2Type
+ * @apiVersion 1.0.0
+ *
+ * @apiHeader {String} Accept application/json
+ * @apiHeader {String} Content-Type application/json
+ *
+ * @apiParam {Number} score     Mandatory score.
+ * @apiParam {String} name     Mandatory name.
+ *
+ * @apiSuccess (201) {String} success Created if successful
+ */
 api.post(
     '/highscore',
     function(request) {
-    // SAVE your icecream
         const params = {
             TableName: 'topScoreLearn2Type',
             Item: {
                 id: Date.now().toString(),
                 score: request.body.score,
-                name: request.body.name // your icecream name
+                name: request.body.name
             }
         };
-        return dynamoDb.put(params).promise(); // returns dynamo result
+        return dynamoDb.put(params).promise();
     },
     { success: 201 }
 ); // returns HTTP status 201 - Created if successful
 
+/**
+ * @api {get} /highscores Test server
+ * @apiName GetHighscores
+ * @apiGroup Learn2Type
+ * @apiVersion 1.0.0
+ *
+ * @apiSuccess {Object[]} highscores List of highscoreObjects
+ */
 api.get('/highscores', () => {
     // GET all users
     return dynamoDb

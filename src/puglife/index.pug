@@ -13,8 +13,14 @@ block content
                 .timer
                     p timer:
                     p#timer 9
-            h1#wordId word
+            h1#wordId
         #input 
-            h1#inputId input
+            h1#inputId
+        #setHighScore
+            h2 Enter your name to save your score:
+            form
+                input#inputName(type="text", name="highScore")
+                button.small#setHighScoreButton(type="submit") ok
     #mainHighScores.nav
         h1 High Scores
+        div#putHighScoresHere

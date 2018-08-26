@@ -7,6 +7,7 @@ export const words = [
         id: 'baroque',
         word: 'baroque'
     },
+
     {
         id: 'constructivist',
         word: 'constructivist'
